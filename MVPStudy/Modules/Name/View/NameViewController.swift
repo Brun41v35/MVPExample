@@ -5,12 +5,12 @@ final class NameViewController: UIViewController {
     // MARK: - Private Properties
     
     private let presenter: NamePresenterProtocol
-    private let nameView: NameView
+    private var nameView: NameViewProtocol & UIView
     
     // MARK: - Init
     
     init(presenter: NamePresenterProtocol,
-         nameView: NameView) {
+         nameView: NameViewProtocol & UIView) {
         self.presenter = presenter
         self.nameView = nameView
         super.init(nibName: nil, bundle: nil)
@@ -35,7 +35,7 @@ final class NameViewController: UIViewController {
     // MARK: - Setup
     
     private func setup() {
-        nameView.setupDelegate(delegate: self)
+        nameView.delegate = self
     }
 }
 

@@ -39,16 +39,6 @@ final class NameView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
-    // MARK: - Public Methods
-    
-    func setupDelegate(delegate: NameViewDelegate) {
-        self.delegate = delegate
-    }
-    
-    func setupNameInformation(name: String) {
-        nameLabel.text = name
-    }
     
     // MARK: - Actions
     
@@ -59,6 +49,12 @@ final class NameView: UIView {
 }
 
 // MARK: - Extension
+
+extension NameView: NameViewProtocol {
+    func setupNameInformation(name: String) {
+        nameLabel.text = name
+    }
+}
 
 extension NameView: ViewCodable {
     func setupSubViews() {
