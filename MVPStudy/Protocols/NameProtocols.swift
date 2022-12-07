@@ -7,6 +7,11 @@ protocol NameViewProtocol {
     var delegate: NameViewDelegate? { get set }
 }
 
+protocol NamePresenterDelegate: AnyObject {
+    func setup(name: String)
+}
+
 protocol NamePresenterProtocol {
-    func insertName() -> String
+    func insertName()
+    var delegate: NamePresenterDelegate? { get set }
 }

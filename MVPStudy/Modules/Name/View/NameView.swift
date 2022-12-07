@@ -64,11 +64,10 @@ extension NameView: ViewCodable {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            
             nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-            nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
+            nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
             nameButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
             nameButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             nameButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),

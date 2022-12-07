@@ -2,15 +2,19 @@ import UIKit
 
 final class NameViewController: UIViewController {
     
+    // MARK: - Typealias
+    
+    typealias NameViewProtocolView = NameViewProtocol & UIView
+    
     // MARK: - Private Properties
     
-    private let presenter: NamePresenterProtocol
-    private var nameView: NameViewProtocol & UIView
+    private var presenter: NamePresenterProtocol
+    private var nameView: NameViewProtocolView
     
     // MARK: - Init
     
     init(presenter: NamePresenterProtocol,
-         nameView: NameViewProtocol & UIView) {
+         nameView: NameViewProtocolView) {
         self.presenter = presenter
         self.nameView = nameView
         super.init(nibName: nil, bundle: nil)
@@ -36,6 +40,7 @@ final class NameViewController: UIViewController {
     
     private func setup() {
         nameView.delegate = self
+        presenter.delegate = self
     }
 }
 
@@ -43,6 +48,12 @@ final class NameViewController: UIViewController {
 
 extension NameViewController: NameViewDelegate {
     func insert() {
-        nameView.setupNameInformation(name: presenter.insertName())
+        presenter.insertName()
+    }
+}
+
+extension NameViewController: NamePresenterDelegate {
+    func setup(name: String) {
+        nameView.setupNameInformation(name: name)
     }
 }
